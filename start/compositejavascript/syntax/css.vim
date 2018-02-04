@@ -5,7 +5,7 @@
 syn region cssInline start="`" end="`" contains=cssRule,cssSelectorTag,cssSelectorClass
 hi def link cssInline Structure
 "CSS Rule
-syn region cssRule start="{" end="}" contains=cssKeyword,cssAll,cssFont,cssPosition,cssBox,cssBackgroundColor,cssBackgroundSize,cssDisplay,cssBackgroundRepeat,cssPadding,cssFlex contained
+syn region cssRule start="{" end="}" contains=cssKeyword,cssAll,cssFont,cssPosition,cssBox,cssBackgroundColor,cssBackgroundSize,cssDisplay,cssBackgroundRepeat,cssPadding,cssFlexDirection,cssFlexGrow,cssFlexWrap,cssBorderColor,cssBorderWidth contained
 
 "Properties
 "syn keyword cssKeyword bottom left right position z-index transition transform animation-name all display flex border min-height height width min-width align-items align-content contained
@@ -45,6 +45,21 @@ syn match cssLabelBox "\(left\)\|\(top\)\|\(right\)\|\(bottom\)\|\(width\)\|\(he
 syn match cssLabelBox "\(margin-left\)\|\(margin-right\)\|\(margin-top\)\|\(margin-bottom\)" contained
 hi def link cssValueBox Comment
 hi def link cssLabelBox Special
+
+
+"Border
+syn region cssBorderColor start="border-\(\(\(top\)\|\(bottom\)\|\(right\)\|\(left\)\)-\)\{0,1}color" end=";" contains=cssValueBorderColor,cssLabelBorderColor
+syn match cssValueBorderColor "\(initial\)\|\(inherit\)\|\(transparent\)\|\(#\x\{6}\)" contained
+syn match cssLabelBorderColor   "border-\(\(\(top\)\|\(bottom\)\|\(right\)\|\(left\)\)-\)\{0,1}color" contained
+hi def link cssValueBorderColor Comment
+hi def link cssLabelBorderColor Special
+
+syn region cssBorderWidth start="border-\(\(\(top\)\|\(bottom\)\|\(right\)\|\(left\)\)-\)\{0,1}width" end=";" contains=cssValueBorderWidth,cssLabelBorderWidth
+syn match cssValueBorderWidth "\(\d\+\(\(%\)\|\(px\)\|\(em\)\|\(rem\)\|\(pt\)\|\(cm\)\)\)"  contained
+syn match cssValueBorderWidth "\(initial\)\|\(inherit\)\|\(thin\)\|\(thick\)\|\(medium\)" contained
+syn match cssLabelBorderWidth   "border-\(\(\(top\)\|\(bottom\)\|\(right\)\|\(left\)\)-\)\{0,1}width" contained
+hi def link cssValueBorderWidth Comment
+hi def link cssLabelBorderWidth Special
 
 "Padding
 syn region cssPadding start="\(padding-left\)\|\(padding-right\)\|\(padding-top\)\|\(padding-bottom\)" end=";" contains=cssValuePadding,cssLabelPadding
@@ -91,11 +106,26 @@ hi def link cssValueDisplay Comment
 hi def link cssLabelDisplay Special
 "syn match cssPropertyValue "background-\i\+\s*\:\s*\zs\i\+" contained
 
-syn region cssFlex start="flex-direction" end=";" contains=cssValueFlex,cssLabelFlex
-syn match cssValueFlex "\(row-reverse\)\|\(column-reverse\>\)\|\(row\)\|\(column\)\|\(inherit\)\|\(initial\)" contained
-syn match cssLabelFlex "flex-direction"  contained
-hi def link cssValueFlex Comment
-hi def link cssLabelFlex Special
+"Flex
+syn region cssFlexDirection start="flex-direction" end=";" contains=cssValueFlexDirection,cssLabelFlexDirection
+syn match cssValueFlexDirection "\(row-reverse\)\|\(column-reverse\>\)\|\(row\)\|\(column\)\|\(inherit\)\|\(initial\)" contained
+syn match cssLabelFlexDirection "flex-direction"  contained
+hi def link cssValueFlexDirection Comment
+hi def link cssLabelFlexDirection Special
+
+syn region cssFlexGrow start="flex-grow" end=";" contains=cssValueFlexGrow,cssLabelFlexGrow
+syn match cssValueFlexGrow "\(inherit\)\|\(initial\)\|\(\(\d\+\)\|\(\d\*\)\(\.\d\+\)\)" contained
+syn match cssLabelFlexGrow "flex-grow"  contained
+hi def link cssValueFlexGrow Comment
+hi def link cssLabelFlexGrow Special
+
+syn region cssFlexWrap start="flex-wrap" end=";" contains=cssValueFlexWrap,cssLabelFlexWrap
+syn match cssValueFlexWrap "\(inherit\)\|\(initial\)\|\(no-wrap\)\|\(wrap-reverse\)" contained
+syn match cssValueFlexWrap "\(wrap[^-]\)" contained
+syn match cssLabelFlexWrap "flex-wrap"  contained
+hi def link cssValueFlexWrap Comment
+hi def link cssLabelFlexWrap Special
+
 "Selectors
 syn match cssSelectorClass "\.\i\+" contained
 syn keyword cssSelectorTag  div li lu img p body html table tr td span contained

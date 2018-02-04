@@ -11,5 +11,16 @@
 		bottom:2px;
 		flex-direction: column;
 
-	}	`
+		flex-grow: 1;
+		flex-wrap: wrap-reverse;
+		border-top-color:initial;
+		border-bottom-color:#010101;
+		border-left-color:red;
+		border-right-color:transparent;
+		border-top-width:1px;
+		border-color:#afafaf;
+		border-top-width:20%;
+		border-width:2px;
+
+	}
 `
