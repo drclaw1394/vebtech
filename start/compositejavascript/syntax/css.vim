@@ -5,14 +5,14 @@
 syn region cssInline start="`" end="`" contains=cssRule,cssSelectorTag,cssSelectorClass
 hi def link cssInline Structure
 "CSS Rule
-syn region cssRule start="{" end="}" contains=cssKeyword,cssAll,cssFont,cssPosition,cssBox,cssBackgroundColor,cssBackgroundSize,cssDisplay,cssBackgroundRepeat,cssPadding,cssFlexDirection,cssFlexGrow,cssFlexWrap,cssBorderColor,cssBorderWidth contained
+syn region cssRule start="{" end="}" contains=cssKeyword,cssAll,cssFont,cssPosition,cssBox,cssBackgroundColor,cssBackgroundSize,cssDisplay,cssBackgroundRepeat,cssPadding,cssFlexDirection,cssFlexGrow,cssFlexWrap,cssBorderColor,cssBorderWidth,cssAlignContent,cssAlignItems,cssAlignSelf,all,cssOverFlow,cssOpacity,cssZIndex contained
 
 "Properties
 "syn keyword cssKeyword bottom left right position z-index transition transform animation-name all display flex border min-height height width min-width align-items align-content contained
 "syn match cssKeyword "font" contained
 "syn match cssKeyword "background-\(\(color\)\|\(image\)\|\(size\)\)" contained
-syn match cssAll /\(all:\)\(\(unset\)\|\(inherit\)\|\(initial\)\)/hs=s+4 contained
-hi def link cssAll Type
+"syn match cssAll /\(all:\)\(\(unset\)\|\(inherit\)\|\(initial\)\)/hs=s+4 contained
+"hi def link cssAll Type
 
 "Units
 "syn match  cssUnit "\d\(px\)\|\(em\)\|\(rem\)|\(pt\)"hs=s+1  contained
@@ -125,6 +125,59 @@ syn match cssValueFlexWrap "\(wrap[^-]\)" contained
 syn match cssLabelFlexWrap "flex-wrap"  contained
 hi def link cssValueFlexWrap Comment
 hi def link cssLabelFlexWrap Special
+
+
+syn region cssAlignContent start="align-content" end=";" contains=cssValueAlignContent,cssLabelAlignContent
+syn match cssValueAlignContent "\(inherit\)\|\(initial\)\|\(stretch\)\|\(center\)\|\(flex-start\)\|\(flex-end\)\|\(space-around\)\|\(space-between\)" contained
+syn match cssLabelAlignContent "align-content"  contained
+hi def link cssValueAlignContent Comment
+hi def link cssLabelAlignContent Special
+
+
+syn region cssAlignItems start="align-items" end=";" contains=cssValueAlignItems,cssLabelAlignItems
+syn match cssValueAlignItems "\(inherit\)\|\(initial\)\|\(stretch\)\|\(center\)\|\(flex-start\)\|\(flex-end\)\|\(baseline\)" contained
+syn match cssLabelAlignItems "align-items"  contained
+hi def link cssValueAlignItems Comment
+hi def link cssLabelAlignItems Special
+
+syn region cssAlignSelf start="align-self" end=";" contains=cssValueAlignSelf,cssLabelAlignSelf
+syn match cssValueAlignSelf "\(auto\)\|\(inherit\)\|\(initial\)\|\(stretch\)\|\(center\)\|\(flex-start\)\|\(flex-end\)\|\(baseline\)" contained
+syn match cssLabelAlignSelf "align-self"  contained
+hi def link cssValueAlignSelf Comment
+hi def link cssLabelAlignSelf Special
+
+
+"All
+
+syn region cssAll start="all" end=";" contains=cssValueAll,cssLabelAll
+syn match cssValueAll "\(inherit\)\|\(initial\)\|\(unset\)" contained
+syn match cssLabelAll "all"  contained
+hi def link cssValueAll Comment
+hi def link cssLabelAll Special
+
+"Overflow
+
+syn region cssOverFlow start="overflow\(-[xy]\)\{0,1}" end=";" contains=cssValueOverFlow,cssLabelOverFlow
+syn match cssValueOverFlow "\(inherit\)\|\(initial\)\|\(auto\)\|\(visible\)\|\(hidden\)\|\(scroll\)" contained
+syn match cssLabelOverFlow "overflow\(-[xy]\)\{0,1}" contained
+hi def link cssValueOverFlow Comment
+hi def link cssLabelOverFlow Special
+
+"Opacity
+syn region cssOpacity start="opacity" end=";" contains=cssValueOpacity,cssLabelOpacity
+syn match cssValueOpacity "\(inherit\)\|\(initial\)\|\(\(\d\+\)\|\(\d\*\)\(\.\d\+\)\)" contained
+syn match cssLabelOpacity "opacity"  contained
+hi def link cssValueOpacity Comment
+hi def link cssLabelOpacity Special
+
+
+"Z index
+syn region cssZIndex start="z-index" end=";" contains=cssValueZIndex,cssLabelZIndex
+syn match cssValueZIndex "\(inherit\)\|\(initial\)\|\(auto\)\|\(-\{0,1}\d\+\)" contained
+syn match cssLabelZIndex "z-index"  contained
+hi def link cssValueZIndex Comment
+hi def link cssLabelZIndex Special
+
 
 "Selectors
 syn match cssSelectorClass "\.\i\+" contained

@@ -7,6 +7,7 @@
 		margin-top:10cm;
 		left:1px;
 		top:2cm;
+		height:3em;
 		padding-bottom:2px;
 		bottom:2px;
 		flex-direction: column;
@@ -21,6 +22,18 @@
 		border-color:#afafaf;
 		border-top-width:20%;
 		border-width:2px;
+		align-content:center;
+		align-content:flex-start;
+		align-content:flex-end;
+		align-items:center;
+		align-items:baseline;
+		align-self:baseline;
+		all:unset;
+		overflow:hidden;
+		overflow-y:hidden;
+		opacity:0.5;
+
+		z-index:-12;
 
 	}
 `
