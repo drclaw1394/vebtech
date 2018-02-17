@@ -2,8 +2,8 @@
 "Copyright Ruben Westerberg 2018
 "
 "Inline
-syn region cssInline start="`" end="`" contains=cssRule,cssSelectorTag,cssSelectorClass
-hi def link cssInline Structure
+"syn region cssInline start="`" end="`" contains=cssRule,cssSelectorTag,cssSelectorClass
+"hi def link cssInline Structure
 "CSS Rule
 syn region cssRule start="{" end="}" contains=cssKeyword,cssAll,cssFont,cssPosition,cssBox,cssBackgroundColor,cssBackgroundSize,cssDisplay,cssBackgroundRepeat,cssPadding,cssFlexDirection,cssFlexGrow,cssFlexWrap,cssBorderColor,cssBorderWidth,cssAlignContent,cssAlignItems,cssAlignSelf,all,cssOverFlow,cssOpacity,cssZIndex contained
 

@@ -126,7 +126,9 @@ if main_syntax == 'javascript'
 endif
 let &cpo = s:cpo_save
 unlet s:cpo_save
-echo "in syntax file"
+syn region VebTechInline start="`" end="`" contains=cssRule,cssSelectorTag,cssSelectorClass,htmlElement
+hi def link VebTechInline Structure
 runtime syntax/css.vim
+runtime syntax/html.vim
 
 " vim: ts=8
